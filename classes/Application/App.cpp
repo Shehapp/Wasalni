@@ -25,7 +25,7 @@ void App::chooseCities() const {
 void App::algorithmTypes(string from, string to) const {
     int algorithm;
     while (true) {
-        cout << "1.BFS\n";
+        cout << "1.DFS\n";
         cout << "2.Floyd\n";
         cout << "3.Dijkstra\n";
         cout << "4.exit\n";
