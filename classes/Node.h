@@ -1,6 +1,6 @@
+#pragma once
 
 #include "Point.h"
-#include "bits/stdc++.h"
 
 class Node {
 private:
@@ -8,8 +8,11 @@ private:
     std::string name;
 public:
     Node();
-    Node(std::string name,int x,int y);
+
+    Node(std::string name, int x, int y);
+
     std::string getName();
+
     Point getPoint();
 };
 

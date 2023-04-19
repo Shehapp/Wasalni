@@ -1,15 +1,22 @@
+#pragma once
 
+#import "bits/stdc++.h"
 #include "../Graph.h"
-
-
+using namespace std;
 class ShortPathAlgorithm {
 public:
-    map<string ,Node>mapOfnodes;
-    map<string ,Edge>mapOfEdges;
-    //               (name of node, name of edge)
-    map<string ,vector<pair<string,string>>>adj; //adj list store node.
-    // we can get name of nodes and  locations and name of edge and length of edge
+    ShortPathAlgorithm(Graph *graph);
+    Graph *graph;
+    pair<double,vector<string>>Path;
 
-    virtual void run(string start, string end)=0;
+    virtual void run(std::string start, std::string end);
+
+    virtual void getPath(
+             string start="",
+             string end="",
+             double weight=0,
+             map<string ,bool>vis={},
+             vector<string>curPath={},
+             map<string ,vector<pair<string ,double>>>adj={});
 
 };

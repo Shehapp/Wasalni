@@ -1,29 +1,34 @@
-#include "bits/stdc++.h"
-#include "Edge.h"
-#include "Algorithm/Floyd.h"
-#include "Algorithm/Dfs.h"
-#include "Algorithm/Dijkstra.h"
+#pragma once
 
+#include "Node.h"
 class Graph {
-private:
+public:
 
     string name;
-    vector<Node>nodes;
-    map<string ,Node>mapOfnodes;
-    vector<Edge>edges;
-    map<string ,Edge>mapOfEdges;
-    map<string ,vector<pair<string,string>>>adj;
+    map<string, Node> mapOfnodes;
+    // parent               child      weight
+    map<string, vector<pair<string, double>>> adj;
 
 public:
+    Graph();
+
     Graph(string name);
-    bool addNode(string name,int x,int y);
-    bool addEdge(string nameOfEdge,string node1,string node2);
+
+    bool addNode(string name, int x, int y);
+
+    bool addEdge(string node1, string node2);
+
     void deleteNode(string nameOfNode);
-    bool deleteEdge(string name);
-    void displayEdges();
+
+    void deleteEdge(string node1, string node2);
+
+    static double DitanceBetweenTwoNodes(Node node1, Node node2);
+
     void displayNodes();
+
     void displayGraph();
-    void buildAdjList();
+
     void deleteGraph();
+
     bool distanceBetweenTwoNode();
 };

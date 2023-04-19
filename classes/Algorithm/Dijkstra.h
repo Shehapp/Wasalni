@@ -1,14 +1,24 @@
-//
-// Created by sheha on 4/18/2023.
-//
+#pragma once
 
-#ifndef DATABASEPROJECT_DIJKSTRA_H
-#define DATABASEPROJECT_DIJKSTRA_H
+#include "ShortPathAlgorithm.h"
+class Dijkstra : public ShortPathAlgorithm {
+public:
+
+    Dijkstra(Graph *graph) : ShortPathAlgorithm(graph) {
+        this->graph = graph;
+
+    }
 
 
-class Dijkstra {
+    void run(std::string start, std::string end);
 
+    void getPath(
+            string start = "",
+            string end = "",
+            double weight = 0,
+            map<string, bool> vis = {},
+            vector<string> curPath = {},
+            map<string, vector<pair<string, double>>> adj = {});
 };
 
 
-#endif //DATABASEPROJECT_DIJKSTRA_H
