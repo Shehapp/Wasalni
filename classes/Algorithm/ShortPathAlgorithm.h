@@ -1,7 +1,7 @@
 #pragma once
 
 #import "bits/stdc++.h"
-#include "../Graph.h"
+#include "../GraphComponent/Graph.h"
 using namespace std;
 class ShortPathAlgorithm {
 public:

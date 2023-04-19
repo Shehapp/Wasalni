@@ -4,7 +4,7 @@
 class Dfs : public ShortPathAlgorithm {
 public:
 
-    Dfs(Graph *graph) : ShortPathAlgorithm(graph) {
+    explicit Dfs(Graph *graph) : ShortPathAlgorithm(graph) {
         this->graph = graph;
 
     }
@@ -12,7 +12,7 @@ public:
     void run(std::string
     start,
     std::string end
-    );
+    ) override;
 
     void getPath(
             string start = "",
