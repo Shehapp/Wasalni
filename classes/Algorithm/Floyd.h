@@ -3,6 +3,7 @@
 #include "ShortPathAlgorithm.h"
 class Floyd : public ShortPathAlgorithm {
 public:
+    vector<vector<double>> dp;
 
     Floyd(Graph *graph) : ShortPathAlgorithm(graph) {
         this->graph = graph;
@@ -15,9 +16,8 @@ public:
     void getPath(
             string start = "",
             string end = "",
-            double weight = 0,
-            map<string, bool> vis = {},
-            map<string, vector<pair<string, double>>> adj = {});
-};
+            map<string, vector<pair<string, double>>> adj = {},
+            bool isUpdated = false);
+    };
 
 

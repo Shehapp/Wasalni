@@ -18,6 +18,7 @@ bool Graph::addNode(string name, int x, int y) {
 }
 
 bool Graph::addEdge(string node1, string node2) {
+    isUpdated = false;
     if (mapOfnodes.count(node1) == 0)
         return false;
     if (mapOfnodes.count(node2) == 0)
@@ -38,6 +39,7 @@ double Graph::DitanceBetweenTwoNodes(Node node1, Node node2) {
 //    map<string ,Node>mapOfnodes;
 //    map<string ,vector<pair<string ,double>>>adj;
 void Graph::deleteNode(string nameOfNode) {
+    isUpdated = false;
     mapOfnodes.erase(nameOfNode);
     adj.erase(nameOfNode);
     for (auto &item: adj) {
@@ -51,6 +53,7 @@ void Graph::deleteNode(string nameOfNode) {
 }
 
 void Graph::deleteEdge(string node1, string node2) {
+    isUpdated = false;
     for (auto it = adj[node1].begin(); it != adj[node1].end(); ++it) {
         if (it->first == node2) {
             adj[node1].erase(it);

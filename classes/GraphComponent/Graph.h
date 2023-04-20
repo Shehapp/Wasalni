@@ -5,6 +5,7 @@ class Graph {
 public:
 
     string name;
+    bool isUpdated = false;
     map<string, Node> mapOfnodes;
     // parent               child      weight
     map<string, vector<pair<string, double>>> adj;
