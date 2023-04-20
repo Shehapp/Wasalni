@@ -3,8 +3,7 @@
 
 
 int main() {
-    Graph *graph = new Graph();
-    App *app = new App(graph);
+    App *app = new App(new Graph());
     app->start();
     return 0;
 

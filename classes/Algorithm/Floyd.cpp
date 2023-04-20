@@ -6,7 +6,7 @@
 void Floyd::run(string start, string end) {
     Path.first = -1;
     Path.second.clear();
-    getPath(start, end, 0, {}, {}, graph->adj);
+    getPath(start, end, 0, {}, graph->adj);
     cout << "Weight: " << Path.first << endl;
     cout << "Path: ";
     for (auto a: Path.second) {
@@ -20,7 +20,6 @@ void Floyd::getPath(
         string end,
         double weight,
         map<string, bool> vis,
-        vector<string> curPath,
         map<string, vector<pair<string, double>>> adj) {
 
     //implement Floyd algorithm here

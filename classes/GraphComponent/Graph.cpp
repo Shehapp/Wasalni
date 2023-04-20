@@ -86,10 +86,5 @@ void Graph::deleteGraph() {
     adj.clear();
 }
 
-bool Graph::distanceBetweenTwoNode() {
-
-}
-
-
 
 
