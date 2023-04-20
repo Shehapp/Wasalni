@@ -4,7 +4,7 @@
 class Floyd : public ShortPathAlgorithm {
 public:
     vector<vector<double>> dp;
-
+    vector<vector<int>> next;
     Floyd(Graph *graph) : ShortPathAlgorithm(graph) {
         this->graph = graph;
 

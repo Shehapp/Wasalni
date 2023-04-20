@@ -5,16 +5,16 @@
 
 void Floyd::run(string start, string end) {
     Path.first = -1;
-    //Path.second.clear();
+    Path.second.clear();
     if (graph->mapOfnodes.count(start) > 0 and
         graph->mapOfnodes.count(end) > 0) {
         getPath(start, end, graph->adj, graph->isUpdated);
     }
     cout << "Weight: " << Path.first << endl;
-    /* cout << "Path: ";
+     cout << "Path: ";
      for (auto i: Path.second) {
          cout << i << " ";
-     }*/
+     }
     cout << endl;
 }
 
@@ -27,13 +27,15 @@ void Floyd::getPath(
     int mx = 1000000;
     int now = 0;
     map<string, int> mapString;
+    map<int, string> mapInt;
     for (auto i: adj) {
         mapString[i.first] = now++;
-
+        mapInt[now - 1] = i.first;
     }
     if (!isUpdated) {
-        cout << "iam here\n";
         dp.clear();
+        next.clear();
+        next.resize(graph->adj.size(), vector<int>(graph->adj.size(), -1));
         dp.resize(graph->adj.size(), vector<double>(graph->adj.size(), mx));
         graph->isUpdated = true;
         // dp matrix for store shortest path between all nodes
@@ -43,6 +45,7 @@ void Floyd::getPath(
             dp[mapString[i]][mapString[i]] = 0;
             for (auto u: v) {
                 dp[mapString[i]][mapString[u.first]] = u.second;
+                next[mapString[i]][mapString[u.first]] = mapString[u.first];
             }
         }
         int n = adj.size();
@@ -50,13 +53,22 @@ void Floyd::getPath(
             for (int i = 0; i < n; ++i) {
                 for (int j = 0; j < n; ++j) {
                     if (dp[i][k] == mx || dp[k][j] == mx)continue;
-                    dp[i][j] = min(dp[i][j], dp[i][k] + dp[k][j]);
+                    if (dp[i][j] > dp[i][k] + dp[k][j]) {
+                        dp[i][j] = dp[i][k] + dp[k][j];
+                        next[i][j] = next[i][k];
+                    }
                 }
             }
         }
     }
     if (dp[mapString[start]][mapString[end]] != mx) {
         Path.first = dp[mapString[start]][mapString[end]];
+        int now = mapString[start];
+        while (now != mapString[end]) {
+            Path.second.push_back(mapInt[now]);
+            now = next[now][mapString[end]];
+        }
+        Path.second.push_back(mapInt[now]);
     }
 }
 
