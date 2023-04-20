@@ -16,7 +16,6 @@ public:
              string end="",
              double weight=0,
              map<string ,bool>vis={},
-             vector<string>curPath={},
              map<string ,vector<pair<string ,double>>>adj={});
 
 };

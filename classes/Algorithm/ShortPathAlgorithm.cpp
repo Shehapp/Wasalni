@@ -12,7 +12,6 @@ void ShortPathAlgorithm::getPath(string start,
                                  string end,
                                  double weight,
                                  map<string, bool> vis,
-                                 vector<string> curPath,
                                  map<string, vector<pair<string, double>>> adj) {
 
 }

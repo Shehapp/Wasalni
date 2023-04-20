@@ -3,6 +3,7 @@
 #include "ShortPathAlgorithm.h"
 class Dfs : public ShortPathAlgorithm {
 public:
+    vector<string> curPath;
 
     explicit Dfs(Graph *graph) : ShortPathAlgorithm(graph) {
         this->graph = graph;
@@ -19,7 +20,6 @@ public:
             string end = "",
             double weight = 0,
             map<string, bool> vis = {},
-            vector<string> curPath = {},
             map<string, vector<pair<string, double>>> adj = {});
 };
 
