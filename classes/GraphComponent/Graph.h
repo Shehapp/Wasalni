@@ -30,5 +30,4 @@ public:
 
     void deleteGraph();
 
-    bool distanceBetweenTwoNode();
 };
