@@ -1,7 +1,4 @@
-
-
 #include "Node.h"
-/// any City has name and location
 
 Node::Node() {}
 

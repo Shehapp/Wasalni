@@ -10,6 +10,7 @@ Graph::Graph(string name) {
 }
 
 bool Graph::addNode(string name, int x, int y) {
+    //check if already exist in graph
     if (mapOfnodes.count(name) == 0)
         mapOfnodes[name] = Node(name, x, y);
     else
@@ -18,12 +19,15 @@ bool Graph::addNode(string name, int x, int y) {
 }
 
 bool Graph::addEdge(string node1, string node2) {
+    // set graph isn't updated
     isUpdated = false;
+    // check if any node not exist
     if (mapOfnodes.count(node1) == 0)
         return false;
     if (mapOfnodes.count(node2) == 0)
         return false;
     double Ditance = DitanceBetweenTwoNodes(mapOfnodes[node1], mapOfnodes[node2]);
+
     adj[node1].emplace_back(node2, Ditance);
     adj[node2].emplace_back(node1, Ditance);
     return true;
@@ -36,8 +40,6 @@ double Graph::DitanceBetweenTwoNodes(Node node1, Node node2) {
 }
 
 
-//    map<string ,Node>mapOfnodes;
-//    map<string ,vector<pair<string ,double>>>adj;
 void Graph::deleteNode(string nameOfNode) {
     if(!checkExistEdge(nameOfNode,nameOfNode))
         return;
@@ -72,6 +74,8 @@ void Graph::deleteEdge(string node1, string node2) {
     }
 }
 
+// display graph in console
+
 void Graph::displayNodes() {
     for (auto [a, b]: mapOfnodes) {
         cout << a << " " << b.getPoint().getX() << " " << b.getPoint().getY() << '\n';
@@ -89,9 +93,10 @@ void Graph::displayGraph() {
 }
 
 void Graph::deleteGraph() {
-    mapOfnodes.clear(); //map all nodes by  name
+    mapOfnodes.clear();
     adj.clear();
 }
+
 bool Graph::checkExistEdge(string node1, string node2){
     return mapOfnodes.count(node2)>0 and
            mapOfnodes.count(node1)>0;

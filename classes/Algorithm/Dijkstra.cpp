@@ -5,6 +5,7 @@
 void Dijkstra::run(string start, string end) {
     Path.first = -1;
     Path.second.clear();
+    // check those nodes exist in this graph
     if (graph->checkExistEdge(start, end))
         getPath(start, end, 0, {}, graph->adj);
     cout << "Weight: " << Path.first << endl;
@@ -33,6 +34,7 @@ void Dijkstra::getPath(
     nex.emplace(0, start);
     cost[start] = 0;
     parent[start] = start;
+
     while (!nex.empty()) {
         double cur = -nex.top().first;
         string node = nex.top().second;
@@ -47,9 +49,12 @@ void Dijkstra::getPath(
             }
         }
     }
+
+    //if cost equal zero this means that no path
     if(start!=end && cost[end]==0)
         return;
 
+    // get the path with smallest weight
     Path.first = cost[end];
     Path.second.push_back(end);
     while (parent[end]!=start){

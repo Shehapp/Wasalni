@@ -7,6 +7,7 @@ class ShortPathAlgorithm {
 public:
     ShortPathAlgorithm(Graph *graph);
     Graph *graph;
+    // path value and path
     pair<double,vector<string>>Path;
 
     virtual void run(std::string start, std::string end);

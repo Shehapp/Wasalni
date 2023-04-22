@@ -2,6 +2,9 @@
 
 #include "bits/stdc++.h"
 using namespace std;
+
+// position of node on 2D grid
+
 class Point {
 private:
     int x;

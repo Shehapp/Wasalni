@@ -4,6 +4,8 @@
 class Floyd : public ShortPathAlgorithm {
 public:
     vector<vector<double>> dp;
+
+    // save next state to get path
     vector<vector<int>> next;
     Floyd(Graph *graph) : ShortPathAlgorithm(graph) {
         this->graph = graph;

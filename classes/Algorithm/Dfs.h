@@ -3,6 +3,8 @@
 #include "ShortPathAlgorithm.h"
 class Dfs : public ShortPathAlgorithm {
 public:
+    //changes while dfs if it finds path with
+    // weight less than curWeight
     vector<string> curPath;
 
     explicit Dfs(Graph *graph) : ShortPathAlgorithm(graph) {

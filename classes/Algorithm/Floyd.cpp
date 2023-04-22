@@ -6,9 +6,12 @@
 void Floyd::run(string start, string end) {
     Path.first = -1;
     Path.second.clear();
+
+    // check those nodes exist in this graph
     if (graph->checkExistEdge(start,end)) {
         getPath(start, end, graph->adj, graph->isUpdated);
     }
+
      cout << "Weight: " << Path.first << endl;
      cout << "Path: ";
      for (auto i: Path.second) {
@@ -25,12 +28,16 @@ void Floyd::getPath(
 
     int mx = 1000000;
     int now = 0;
+    // hash name of node from string to number
     map<string, int> mapString;
     map<int, string> mapInt;
     for (auto i: adj) {
         mapString[i.first] = now++;
         mapInt[now - 1] = i.first;
     }
+
+    // if graph is updated then i won't run floyd
+    // buz i have weight and path between each two nodes
     if (!isUpdated) {
         dp.clear();
         next.clear();
@@ -45,6 +52,7 @@ void Floyd::getPath(
                 next[mapString[i]][mapString[u.first]] = mapString[u.first];
             }
         }
+
         int n = adj.size();
         for (int k = 0; k < n; ++k) {
             for (int i = 0; i < n; ++i) {
@@ -58,6 +66,10 @@ void Floyd::getPath(
             }
         }
     }
+
+    // if weight is less than MAX value this means
+    // there is path between those nodes
+    // and will get path
     if (dp[mapString[start]][mapString[end]] != mx) {
         Path.first = dp[mapString[start]][mapString[end]];
         int now = mapString[start];
