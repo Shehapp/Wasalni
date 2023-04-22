@@ -32,14 +32,14 @@ void Dijkstra::getPath(
     nex.emplace(0, start);
     cost[start] = 0;
     parent[start] = start;
-    while (!nex.empty()){
+    while (!nex.empty()) {
         double cur = -nex.top().first;
         string node = nex.top().second;
         nex.pop();
         if (vis[node]) continue;
         vis[node] = true;
-        for(auto [to, w]: adj[node]){
-            if(cost[to]==0 || cost[to] > cur + w){
+        for (auto [to, w]: adj[node]) {
+            if (cost[to] == 0 || cost[to] > cur + w) {
                 cost[to] = cur + w;
                 parent[to] = node;
                 nex.emplace(-cost[to], to);
@@ -58,5 +58,3 @@ void Dijkstra::getPath(
     Path.second.push_back(start);
     reverse(Path.second.begin(),Path.second.end());
 }
-
-

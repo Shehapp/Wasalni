@@ -142,7 +142,3 @@ void App::start() const {
     } while (startChoice != 5);
 
 }
-
-
-
-

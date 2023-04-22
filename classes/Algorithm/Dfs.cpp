@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Dfs.h"
-
 void Dfs::run(string start, string end) {
     Path.first = -1;
     Path.second.clear();

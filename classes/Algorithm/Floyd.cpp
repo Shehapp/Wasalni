@@ -38,8 +38,6 @@ void Floyd::getPath(
         next.resize(graph->adj.size(), vector<int>(graph->adj.size(), -1));
         dp.resize(graph->adj.size(), vector<double>(graph->adj.size(), mx));
         graph->isUpdated = true;
-        // dp matrix for store shortest path between all nodes
-        // map nodes to numbers
 
         for (auto [i, v]: adj) {
             dp[mapString[i]][mapString[i]] = 0;
