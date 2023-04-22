@@ -6,11 +6,10 @@
 void Floyd::run(string start, string end) {
     Path.first = -1;
     Path.second.clear();
-    if (graph->mapOfnodes.count(start) > 0 and
-        graph->mapOfnodes.count(end) > 0) {
+    if (graph->checkExistEdge(start,end)) {
         getPath(start, end, graph->adj, graph->isUpdated);
     }
-    cout << "Weight: " << Path.first << endl;
+     cout << "Weight: " << Path.first << endl;
      cout << "Path: ";
      for (auto i: Path.second) {
          cout << i << " ";

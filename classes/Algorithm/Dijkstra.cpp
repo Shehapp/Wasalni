@@ -5,7 +5,8 @@
 void Dijkstra::run(string start, string end) {
     Path.first = -1;
     Path.second.clear();
-    getPath(start, end, 0, {}, graph->adj);
+    if (graph->checkExistEdge(start, end))
+        getPath(start, end, 0, {}, graph->adj);
     cout << "Weight: " << Path.first << endl;
     cout << "Path: ";
     for (auto a: Path.second) {

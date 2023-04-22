@@ -39,6 +39,8 @@ double Graph::DitanceBetweenTwoNodes(Node node1, Node node2) {
 //    map<string ,Node>mapOfnodes;
 //    map<string ,vector<pair<string ,double>>>adj;
 void Graph::deleteNode(string nameOfNode) {
+    if(!checkExistEdge(nameOfNode,nameOfNode))
+        return;
     isUpdated = false;
     mapOfnodes.erase(nameOfNode);
     adj.erase(nameOfNode);
@@ -53,6 +55,8 @@ void Graph::deleteNode(string nameOfNode) {
 }
 
 void Graph::deleteEdge(string node1, string node2) {
+    if(!checkExistEdge(node1,node2))
+        return;
     isUpdated = false;
     for (auto it = adj[node1].begin(); it != adj[node1].end(); ++it) {
         if (it->first == node2) {
@@ -87,6 +91,10 @@ void Graph::displayGraph() {
 void Graph::deleteGraph() {
     mapOfnodes.clear(); //map all nodes by  name
     adj.clear();
+}
+bool Graph::checkExistEdge(string node1, string node2){
+    return mapOfnodes.count(node2)>0 and
+           mapOfnodes.count(node1)>0;
 }
 
 

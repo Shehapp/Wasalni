@@ -23,6 +23,8 @@ public:
 
     void deleteEdge(string node1, string node2);
 
+    bool checkExistEdge(string node1, string node2);
+
     static double DitanceBetweenTwoNodes(Node node1, Node node2);
 
     void displayNodes();
